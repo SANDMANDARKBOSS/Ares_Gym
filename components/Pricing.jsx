@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCards } from 'swiper/modules';
+import { EffectCards, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 
@@ -74,7 +74,9 @@ export default function Pricing() {
           <Swiper
             effect={'cards'}
             grabCursor={true}
-            modules={[EffectCards]}
+            loop={true}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            modules={[EffectCards, Autoplay]}
             className="mySwiper"
           >
             {membresias.mensuales.map(plan => (
@@ -91,7 +93,9 @@ export default function Pricing() {
           <Swiper
             effect={'cards'}
             grabCursor={true}
-            modules={[EffectCards]}
+            loop={true}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            modules={[EffectCards, Autoplay]}
             className="mySwiper"
           >
             {membresias.largoPlazo.map(plan => (
@@ -110,7 +114,9 @@ export default function Pricing() {
                <Swiper
                  effect={'cards'}
                  grabCursor={true}
-                 modules={[EffectCards]}
+                 loop={true}
+                 autoplay={{ delay: 3000, disableOnInteraction: false }}
+                 modules={[EffectCards, Autoplay]}
                  className="mySwiper"
                >
                  {membresias.especiales.map(plan => (

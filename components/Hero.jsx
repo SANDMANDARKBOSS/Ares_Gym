@@ -77,6 +77,7 @@ export default function Hero() {
           <Swiper
             effect={'cards'}
             grabCursor={true}
+            loop={true}
             modules={[EffectCards, Autoplay]}
             autoplay={{ delay: 2500, disableOnInteraction: false }}
             className="mySwiper"
