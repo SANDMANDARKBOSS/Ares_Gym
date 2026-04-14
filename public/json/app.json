@@ -1,0 +1,116 @@
+{
+    "horarios": [
+        {
+            "id": "semana",
+            "titulo": "Lunes a Viernes",
+            "hora": "05:30 - 22:00",
+            "descripcion": "Horario ininterrumpido",
+            "icono": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"></line><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"></line><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"></line></svg>"
+        },
+        {
+            "id": "fines_semana",
+            "titulo": "Sábado, Domingo y Feriados",
+            "hora": "07:30 - 12:30",
+            "descripcion": "Entrena en tus días libres",
+            "icono": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 10.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8.5\"></path><path d=\"M3 10.5A2 2 0 0 0 5 12h14a2 2 0 0 0 2-1.5\"></path><path d=\"M8 2v4\"></path><path d=\"M16 2v4\"></path><path d=\"M3 6h18\"></path><path d=\"M12 18v-4\"></path><path d=\"M8 18v-4\"></path><path d=\"M16 18v-4\"></path></svg>"
+        }
+    ],
+    "membresias": {
+        "nota": "Todos los planes (excepto el pase diario) incluyen toma de medidas antropométricas y asesoramiento nutricional 2 veces al mes.",
+        "mensuales": [
+            {
+                "id": "mensual_1",
+                "titulo": "Mensual (1 Persona)",
+                "precio": "$30",
+                "periodo": "/mes",
+                "destacado": true,
+                "badge": "Más Popular",
+                "incluye": [
+                    "Entrenamiento sin límite",
+                    "Nutrición (2x/mes)",
+                    "Medidas (2x/mes)"
+                ]
+            },
+            {
+                "id": "mensual_2_3",
+                "titulo": "Mensual (2 a 3 Personas)",
+                "precio": "$25",
+                "periodo": "/mes c/u",
+                "destacado": false,
+                "badge": "",
+                "incluye": [
+                    "Entrenamiento sin límite",
+                    "Nutrición (2x/mes)",
+                    "Medidas (2x/mes)"
+                ]
+            },
+            {
+                "id": "mensual_4_plus",
+                "titulo": "Mensual (4+ Personas)",
+                "precio": "$20",
+                "periodo": "/mes c/u",
+                "destacado": false,
+                "badge": "",
+                "incluye": [
+                    "Entrenamiento sin límite",
+                    "Nutrición (2x/mes)",
+                    "Medidas (2x/mes)"
+                ]
+            }
+        ],
+        "largoPlazo": [
+            {
+                "id": "trimestral",
+                "titulo": "Trimestral",
+                "precio": "$80",
+                "periodo": "/3 meses",
+                "destacado": false,
+                "badge": "Ahorra $10",
+                "incluye": [
+                    "Entrenamiento total",
+                    "Incluye Nutrición",
+                    "Incluye Medidas"
+                ]
+            },
+            {
+                "id": "semestral",
+                "titulo": "Semestral",
+                "precio": "$150",
+                "periodo": "/6 meses",
+                "destacado": false,
+                "badge": "Ahorra $30",
+                "incluye": [
+                    "Entrenamiento total",
+                    "Incluye Nutrición",
+                    "Incluye Medidas"
+                ]
+            },
+            {
+                "id": "anual",
+                "titulo": "Anual",
+                "precio": "$300",
+                "periodo": "/año",
+                "destacado": true,
+                "badge": "Mejor Valor",
+                "incluye": [
+                    "Entrenamiento total",
+                    "Incluye Nutrición",
+                    "Incluye Medidas"
+                ]
+            }
+        ],
+        "especiales": [
+            {
+                "id": "diario",
+                "titulo": "Pase Diario",
+                "precio": "$2",
+                "periodo": "/día",
+                "destacado": false,
+                "badge": "Visita Rápida",
+                "incluye": [
+                    "Acceso ilimitado por el día"
+                ]
+            }
+        ]
+    }
+}
