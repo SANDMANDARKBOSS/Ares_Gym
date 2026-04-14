@@ -1,6 +1,10 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCards } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
 
 export default function Pricing() {
   const [membresias, setMembresias] = useState(null);
@@ -63,20 +67,56 @@ export default function Pricing() {
         </motion.div>
         
         <h3 className="pricing-subtitle">Membresías Mensuales Estándar</h3>
-        <div className="pricing-grid">
+        <div className="pricing-grid desktop-only">
           {membresias.mensuales.map(plan => renderCard(plan))}
+        </div>
+        <div className="mobile-only pricing-swiper">
+          <Swiper
+            effect={'cards'}
+            grabCursor={true}
+            modules={[EffectCards]}
+            className="mySwiper"
+          >
+            {membresias.mensuales.map(plan => (
+              <SwiperSlide key={plan.id}>{renderCard(plan)}</SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
         <h3 className="pricing-subtitle mt-5">Ahorra con Planes a Largo Plazo</h3>
-        <div className="pricing-grid">
+        <div className="pricing-grid desktop-only">
           {membresias.largoPlazo.map(plan => renderCard(plan, true))}
+        </div>
+        <div className="mobile-only pricing-swiper">
+          <Swiper
+            effect={'cards'}
+            grabCursor={true}
+            modules={[EffectCards]}
+            className="mySwiper"
+          >
+            {membresias.largoPlazo.map(plan => (
+              <SwiperSlide key={plan.id}>{renderCard(plan, true)}</SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
         {membresias.especiales && membresias.especiales.length > 0 && (
           <div className="special-plans-container" style={{ marginTop: '40px', textAlign: 'center' }}>
              <h3 className="pricing-subtitle">Planes de Corto Plazo</h3>
-             <div className="pricing-grid" style={{ justifyContent: 'center', marginTop: '20px' }}>
+             <div className="pricing-grid desktop-only" style={{ justifyContent: 'center', marginTop: '20px' }}>
                 {membresias.especiales.map(plan => renderCard(plan, true))}
+             </div>
+             <div className="mobile-only pricing-swiper" style={{ marginTop: '20px' }}>
+               <Swiper
+                 effect={'cards'}
+                 grabCursor={true}
+                 modules={[EffectCards]}
+                 className="mySwiper"
+               >
+                 {membresias.especiales.map(plan => (
+                   <SwiperSlide key={plan.id}>{renderCard(plan, true)}</SwiperSlide>
+                 ))}
+               </Swiper>
              </div>
           </div>
         )}

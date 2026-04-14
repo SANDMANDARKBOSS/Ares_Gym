@@ -1,6 +1,10 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCards, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
 
 export default function Hero() {
   return (
@@ -42,7 +46,7 @@ export default function Hero() {
           </motion.div>
         </div>
         
-        <div className="hero-images">
+        <div className="hero-images desktop-only">
           <motion.img 
             src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop" 
             className="hero-img img-1" 
@@ -67,6 +71,26 @@ export default function Hero() {
             animate={{ scale: 1, opacity: 1, rotate: 5, x: 0 }}
             transition={{ type: "spring", stiffness: 100, delay: 1 }}
           />
+        </div>
+
+        <div className="hero-swiper-mobile mobile-only">
+          <Swiper
+            effect={'cards'}
+            grabCursor={true}
+            modules={[EffectCards, Autoplay]}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop" alt="Hombre levantando pesas gimnasio" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=800&auto=format&fit=crop" alt="Mancuernas gimnasio" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop" alt="Hombre entrenando crossfit" />
+            </SwiperSlide>
+          </Swiper>
         </div>
       </div>
     </section>

@@ -21,6 +21,24 @@
   box-sizing: border-box;
 }
 
+/* Responsive UI Helpers */
+.mobile-only {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .desktop-only {
+    display: none !important;
+  }
+  .mobile-only {
+    display: block !important;
+  }
+  /* Fix swiper block context */
+  div.mobile-only {
+    display: block !important;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   /* Good for smooth anchor linking */
@@ -398,7 +416,11 @@ header.scrolled .nav-container {
 
 @media (max-width: 768px) {
   .hero-watermark {
-    display: none;
+    display: block !important;
+    opacity: 0.1 !important;
+    height: 100% !important;
+    left: -20% !important;
+    z-index: 0;
   }
 
   .hero-content h1 {
@@ -438,6 +460,27 @@ header.scrolled .nav-container {
     right: 0 !important;
     bottom: 0 !important;
     transform: none !important;
+  }
+  
+  /* Swiper Mobile Styles for Hero */
+  .hero-swiper-mobile {
+    width: 280px;
+    height: 350px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    z-index: 5;
+  }
+
+  .hero-swiper-mobile .swiper-slide {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  }
+
+  .hero-swiper-mobile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   
   .img-2, .img-3 {
@@ -1025,8 +1068,19 @@ section {
     text-align: center;
   }
   
+  /* Movil Pricing Slicer (Apple Style) */
+  .pricing-swiper {
+    padding-bottom: 40px !important;
+    padding-top: 15px !important;
+  }
+  
+  .pricing-swiper .swiper-slide {
+    height: auto;
+  }
+  
   .pricing-card {
     padding: 2.5rem 1.5rem;
+    height: 100%; /* For swiper slides */
   }
 
   .badge {
