@@ -1,24 +1,31 @@
 import './globals.css';
 
 export const metadata = {
+  metadataBase: new URL('https://aresgym.com'), // REEMPLAZA CON TU DOMINIO REAL (ej: https://tudominio.com)
   title: 'Ares Gym | El Mejor Gimnasio de Entrenamiento de Fuerza en Pichincha',
   description: 'Ares Gym: Entrenamiento de élite y alto rendimiento. Equipamiento profesional para hipertrofia, potencia y recomposición corporal con asesoría experta 24/7.',
   keywords: ['Gimnasio en Pichincha', 'Entrenamiento de fuerza', 'Culturismo', 'Ares Gym', 'Gimnasio Elite', 'Asesoría deportiva Ecuador'],
   openGraph: {
     title: 'Ares Gym | Elite Fitness & Strength',
-    description: 'Domina tu destino con el mejor equipamiento de fuerza.',
-    url: 'https://aresgym.com', // Cambiar por tu URL real
+    description: 'Domina tu destino con el mejor equipamiento de fuerza profesional.',
+    url: 'https://aresgym.com', // Reemplaza con tu URL real
     siteName: 'Ares Gym',
     images: [
       {
-        url: '/assets/ares-gym-1.jpeg',
-        width: 1200,
-        height: 630,
-        alt: 'Ares Gym Interior',
+        url: '/assets/logo.jpeg', // Ahora usamos el logo
+        width: 800,
+        height: 800,
+        alt: 'Ares Gym Logo',
       },
     ],
     locale: 'es_EC',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ares Gym | Elite Fitness',
+    description: 'Entrenamiento de alto rendimiento en Pichincha.',
+    images: ['/assets/logo.jpeg'],
   },
   robots: {
     index: true,
