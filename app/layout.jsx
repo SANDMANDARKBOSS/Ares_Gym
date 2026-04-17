@@ -38,9 +38,9 @@ export default function RootLayout({ children }) {
     "@context": "https://schema.org",
     "@type": "Gym",
     "name": "Ares Gym",
-    "image": "/assets/logo.jpeg",
-    "@id": "https://aresgym.com",
-    "url": "https://aresgym.com",
+    "image": "https://ares-gym-k1f1.vercel.app/assets/logo.jpeg",
+    "@id": "https://ares-gym-k1f1.vercel.app",
+    "url": "https://ares-gym-k1f1.vercel.app",
     "telephone": "+593998191554",
     "address": {
       "@type": "PostalAddress",
