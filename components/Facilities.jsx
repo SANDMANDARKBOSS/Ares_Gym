@@ -43,14 +43,15 @@ export default function Facilities() {
       </div>
 
       <div className="cinematic-wrapper">
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.div
             key={index}
             className="cinematic-slide"
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.05 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            style={{ position: 'absolute', inset: 0 }}
           >
             {/* Imagen de fondo */}
             <img
@@ -65,27 +66,27 @@ export default function Facilities() {
             {/* Contenido con entrada escalonada */}
             <div className="cinematic-content">
               <motion.h3
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
                 className="cinematic-title"
               >
                 {slides[index].title}
               </motion.h3>
 
               <motion.p
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
+                transition={{ delay: 0.7, duration: 0.8 }}
                 className="cinematic-desc"
               >
                 {slides[index].description}
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.8 }}
+                transition={{ delay: 0.9, duration: 0.8 }}
                 className="cinematic-actions"
               >
                 <a href="#planes" className="btn-netflix-primary">

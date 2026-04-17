@@ -25,51 +25,39 @@ export default function Navbar() {
   }, [menuOpen]);
 
   return (
-    <header className={scrolled ? 'scrolled' : ''}>
+    <header className={scrolled ? 'scrolled premium-header' : 'premium-header'}>
       <motion.div 
-        className="nav-container edge-to-edge"
-        initial={{ y: -80, opacity: 0 }}
+        className="nav-container"
+        initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+        transition={{ duration: 0.8 }}
       >
         <a href="#" className="logo-container">
-          <img src="/assets/logo.jpeg" alt="Ares Gym Logo" />
+          <img src="/assets/logo.jpeg" alt="Ares Gym Logo" className="nav-logo" />
           <div className="logo-text">ARES <span>GYM</span></div>
         </a>
         <nav>
-          {/* Overlay behind menu */}
           <div 
             className={`menu-overlay ${menuOpen ? 'active' : ''}`} 
             onClick={() => setMenuOpen(false)}
           />
           <ul className={`nav-links ${menuOpen ? 'nav-active' : ''}`}>
             <li><a href="#inicio" onClick={() => setMenuOpen(false)}>Inicio</a></li>
-            <li><a href="#entrenador" onClick={() => setMenuOpen(false)}>Nosotros</a></li>
-            <li><a href="#instalaciones" onClick={() => setMenuOpen(false)}>Instalaciones</a></li>
+            <li><a href="#entrenador" onClick={() => setMenuOpen(false)}>Coach</a></li>
+            <li><a href="#instalaciones" onClick={() => setMenuOpen(false)}>Sede</a></li>
             <li><a href="#horarios" onClick={() => setMenuOpen(false)}>Horarios</a></li>
-            <li><a href="#planes" onClick={() => setMenuOpen(false)}>Membresías</a></li>
-            <li><a href="#preguntas" onClick={() => setMenuOpen(false)}>Dudas Frecuentes</a></li>
+            <li><a href="#planes" onClick={() => setMenuOpen(false)}>Planes</a></li>
             <li>
-              <a href="https://wa.me/593998191554?text=Hola%20Carlos,%20me%20gustar%C3%ADa%20unirme%20a%20Ares%20Gym." 
+              <a href="https://wa.me/593998191554" 
                  target="_blank" 
-                 className="btn btn-primary join-btn">
-                Únete Ahora
+                 className="btn btn-primary nav-cta">
+                Únete
               </a>
             </li>
           </ul>
-          <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? (
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            ) : (
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-              </svg>
-            )}
+          <div className="menu-toggle-v2" onClick={() => setMenuOpen(!menuOpen)}>
+            <div className={`bar ${menuOpen ? 'open' : ''}`}></div>
+            <div className={`bar ${menuOpen ? 'open' : ''}`}></div>
           </div>
         </nav>
       </motion.div>

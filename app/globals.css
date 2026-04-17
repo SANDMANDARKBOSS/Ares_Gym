@@ -250,7 +250,7 @@ header.scrolled .nav-container {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.4) contrast(1.1);
+  filter: brightness(0.6) contrast(1.1); /* Ajustado de 0.4 a 0.6 para mayor claridad */
 }
 
 .hero-overlay {
@@ -722,30 +722,132 @@ header.scrolled .nav-container {
 }
 
 
-/* --- Cinematic Facilities Slider --- */
-.facilities-cinematic {
-  background-color: var(--bg-dark);
-  padding: 100px 0 0 0;
-  overflow: hidden;
-}
-
-.cinematic-wrapper {
-  width: 100%;
-  height: 600px;
-  position: relative;
-  overflow: hidden;
-  margin-top: 50px;
-}
-
-.cinematic-slide {
-  position: absolute;
+/* --- Premium Navbar (Glassmorphism) --- */
+.premium-header {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  padding: 10px 0;
+}
+
+.premium-header.scrolled {
+  background: rgba(5, 5, 5, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 5px 0;
+}
+
+.nav-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.nav-logo {
+  height: 45px !important;
+  border-radius: 4px;
+}
+
+.logo-text {
+  font-size: 1.8rem !important;
+  letter-spacing: 1px !important;
+}
+
+.nav-links {
   display: flex;
   align-items: center;
-  padding: 0 10%;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-header);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-red);
+}
+
+.nav-cta {
+  padding: 0.8rem 2rem !important;
+  font-size: 0.85rem !important;
+  border-radius: 2px !important;
+  box-shadow: 0 10px 20px rgba(178, 31, 36, 0.2);
+}
+
+/* Mobile Toggle V2 */
+.menu-toggle-v2 {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menu-toggle-v2 .bar {
+  width: 28px;
+  height: 2px;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle-v2 .bar.open:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+.menu-toggle-v2 .bar.open:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+
+@media (max-width: 992px) {
+  .menu-toggle-v2 { display: flex; }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    flex-direction: column;
+    justify-content: center;
+    transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    gap: 2.5rem;
+  }
+  .nav-links.nav-active { right: 0; }
+  .nav-links a { font-size: 1.5rem; }
+}
+
+/* --- Refined Facilities Cinematic --- */
+.facilities-cinematic {
+  background: #000;
+  padding: 80px 0;
+}
+
+.cinematic-wrapper {
+  height: 60vh;
+  min-height: 450px;
+  margin: 40px 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+}
+
+@media (min-width: 992px) {
+  .cinematic-wrapper {
+    margin: 40px 5%;
+    border-radius: 12px;
+    height: 70vh;
+  }
 }
 
 .cinematic-img {
@@ -756,72 +858,62 @@ header.scrolled .nav-container {
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  transform-origin: center;
+  filter: brightness(0.8) contrast(1.1);
+}
+
+/* Eliminado el hover scale para mantener estabilidad */
+.cinematic-slide .cinematic-img {
+  transform: none;
 }
 
 .cinematic-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 35%, rgba(0, 0, 0, 0) 100%);
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
   z-index: 1;
 }
 
 .cinematic-content {
   position: relative;
   z-index: 10;
-  max-width: 600px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 800px;
+  padding: 0 8%;
 }
 
 .cinematic-title {
-  font-size: 4rem;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 1rem;
-  line-height: 1.05;
-  letter-spacing: -1px;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+  font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  font-weight: 900 !important;
 }
 
 .cinematic-desc {
-  font-size: 1.15rem;
-  color: #ccc;
-  margin-bottom: 2.5rem;
-  line-height: 1.6;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-}
-
-.cinematic-actions {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.cinematic-indicators {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 12px;
-  z-index: 20;
+  font-size: 1.1rem !important;
+  color: #bbb !important;
+  margin-bottom: 3rem;
+  max-width: 450px;
 }
 
 .indicator-dot {
-  width: 40px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.15) !important;
+  height: 3px !important;
+  width: 50px !important;
 }
 
 .indicator-dot.active {
-  background: var(--primary-red);
-  width: 60px;
-  box-shadow: 0 0 10px rgba(178, 31, 36, 0.6);
+  background: var(--primary-red) !important;
+  width: 80px !important;
+}
+
+@media (max-width: 768px) {
+  .cinematic-wrapper { margin: 20px 0; border-radius: 0; height: 80vh; }
+  .cinematic-content { padding: 0 20px; text-align: center; align-items: center; }
+  .cinematic-overlay { background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.9) 100%); }
+  .cinematic-actions { flex-direction: column; width: 100%; }
 }
 
 .btn-netflix-primary {

@@ -22,14 +22,15 @@ export default function Hero() {
     <section className="hero" id="inicio">
       {/* Fondo con Transición Suave */}
       <div className="hero-slider">
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.div
             key={index}
             className="hero-slide"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 2, ease: "easeInOut" }}
+            style={{ position: 'absolute', inset: 0 }}
           >
             <img src={heroSlides[index].src} alt="Gym" />
             <div className="hero-overlay" />
