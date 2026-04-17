@@ -1,98 +1,100 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCards, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/effect-cards';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const heroSlides = [
+  { src: "/assets/ares-gym-1.jpeg" },
+  { src: "/assets/ares-gym-2.jpeg" },
+  { src: "/assets/ares-gym-3.jpeg" }
+];
 
 export default function Hero() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="hero" id="inicio">
-      <motion.img 
-        src="/assets/logo.jpeg" 
-        alt="Ares Gym Logo Watermark" 
-        className="hero-watermark"
-        initial={{ scale: 0.8, opacity: 0, y: "-50%", rotate: -5 }}
-        animate={{ scale: 1, opacity: 0.15, y: "-50%", rotate: -5 }}
-        transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
-      />
+      {/* Fondo con Transición Suave */}
+      <div className="hero-slider">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            className="hero-slide"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5 }}
+          >
+            <img src={heroSlides[index].src} alt="Gym" />
+            <div className="hero-overlay" />
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-      <div className="container">
-        <div className="hero-content">
+      <div className="container hero-container">
+        <div className="hero-main">
+          <motion.div 
+            className="hero-badge"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <span className="dot"></span> LIVE: POTENCIA PURA
+          </motion.div>
+
           <motion.h1
-            initial={{ x: -60, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
           >
             SUPERANDO<br/>TUS <span>LÍMITES</span>
           </motion.h1>
-          <motion.p 
-            className="hero-subtitle"
-            initial={{ x: -40, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
           >
-            El mejor equipamiento y un entorno diseñado exclusivamente para resultados serios. Tu dedicación merece un lugar de alto rendimiento.
+            Siente el poder del entrenamiento de élite. Equipamiento profesional y un entorno diseñado exclusivamente para resultados reales.
           </motion.p>
+
           <motion.div 
-            className="hero-buttons"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
+            className="hero-actions"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
           >
             <a href="#planes" className="btn btn-primary">Ver Planes</a>
             <a href="#horarios" className="btn btn-outline">Ver Horarios</a>
           </motion.div>
         </div>
-        
-        <div className="hero-images desktop-only">
-          <motion.img 
-            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop" 
-            className="hero-img img-1" 
-            alt="Hombre levantando pesas gimnasio"
-            initial={{ scale: 0.8, opacity: 0, rotate: 5 }}
-            animate={{ scale: 1, opacity: 1, rotate: 5 }}
-            transition={{ type: "spring", stiffness: 100, delay: 0.8 }}
-          />
-          <motion.img 
-            src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=800&auto=format&fit=crop" 
-            className="hero-img img-2" 
-            alt="Mancuernas gimnasio"
-            initial={{ scale: 0.8, opacity: 0, rotate: -5, y: 50 }}
-            animate={{ scale: 1, opacity: 1, rotate: -5, y: 0 }}
-            transition={{ type: "spring", stiffness: 100, delay: 0.9 }}
-          />
-          <motion.img 
-            src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop" 
-            className="hero-img img-3" 
-            alt="Hombre entrenando crossfit"
-            initial={{ scale: 0.8, opacity: 0, rotate: 5, x: -50 }}
-            animate={{ scale: 1, opacity: 1, rotate: 5, x: 0 }}
-            transition={{ type: "spring", stiffness: 100, delay: 1 }}
-          />
-        </div>
 
-        <div className="hero-swiper-mobile mobile-only">
-          <Swiper
-            effect={'cards'}
-            grabCursor={true}
-            loop={true}
-            modules={[EffectCards, Autoplay]}
-            autoplay={{ delay: 2500, disableOnInteraction: false }}
-            className="mySwiper"
-          >
-            <SwiperSlide>
-              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop" alt="Hombre levantando pesas gimnasio" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=800&auto=format&fit=crop" alt="Mancuernas gimnasio" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop" alt="Hombre entrenando crossfit" />
-            </SwiperSlide>
-          </Swiper>
-        </div>
+        <motion.div 
+          className="hero-stats-card"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.8 }}
+        >
+          <div className="stat">
+            <span className="val">+50</span>
+            <span className="lbl">Máquinas</span>
+          </div>
+          <div className="sep"></div>
+          <div className="stat">
+            <span className="val">24/7</span>
+            <span className="lbl">Asesoría</span>
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="hero-scroll">
+        <div className="scroll-line"></div>
+        <span>DESLIZA</span>
       </div>
     </section>
   );

@@ -1,6 +1,11 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
 
 const credentials = [
   {
@@ -26,19 +31,43 @@ const credentials = [
 ];
 
 export default function Founder() {
+  const coachImages = [
+    "/assets/1.png",
+    "/assets/2.png",
+    "/assets/3.png"
+  ];
+
   return (
     <section className="about-founder" id="entrenador">
+        <div className="section-watermark">
+            <img src="/assets/logo.jpeg" alt="Ares Gym Branding" />
+        </div>
         <div className="container">
             <div className="founder-grid">
                 <motion.div 
-                  className="founder-image"
+                  className="founder-image-container"
+                  style={{ position: 'relative', zIndex: 1 }}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.8 }}
                 >
-                    <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=800&auto=format&fit=crop" alt="Entrenador Fundador" />
-                    <div className="experience-badge">
+                    <Swiper
+                      modules={[Autoplay, EffectFade, Pagination]}
+                      effect={'fade'}
+                      fadeEffect={{ crossFade: true }}
+                      autoplay={{ delay: 3000, disableOnInteraction: false }}
+                      pagination={{ clickable: true }}
+                      loop={coachImages.length > 1}
+                      className="coach-swiper"
+                    >
+                      {coachImages.map((img, index) => (
+                        <SwiperSlide key={index}>
+                          <img src={img} alt={`Entrenador Ares Gym ${index + 1}`} className="founder-img" />
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                    <div className="experience-badge" style={{ zIndex: 10 }}>
                         <span className="years">+5</span>
                         <span className="text">Años de<br/>Experiencia</span>
                     </div>

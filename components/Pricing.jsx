@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCards, Autoplay } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/effect-cards';
+import 'swiper/css/pagination';
 
 export default function Pricing() {
   const [membresias, setMembresias] = useState(null);
@@ -51,6 +51,24 @@ export default function Pricing() {
     );
   };
 
+  const getSwiperConfig = (items) => ({
+    slidesPerView: 1,
+    spaceBetween: 20,
+    centeredSlides: true,
+    loop: items.length > 1,
+    speed: 600,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    pagination: {
+      clickable: true,
+      dynamicBullets: true,
+    },
+    modules: [Autoplay, Pagination],
+  });
+
   if (!membresias) return null;
 
   return (
@@ -71,14 +89,7 @@ export default function Pricing() {
           {membresias.mensuales.map(plan => renderCard(plan))}
         </div>
         <div className="mobile-only pricing-swiper">
-          <Swiper
-            effect={'cards'}
-            grabCursor={true}
-            loop={true}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            modules={[EffectCards, Autoplay]}
-            className="mySwiper"
-          >
+          <Swiper {...getSwiperConfig(membresias.mensuales)}>
             {membresias.mensuales.map(plan => (
               <SwiperSlide key={plan.id}>{renderCard(plan)}</SwiperSlide>
             ))}
@@ -90,14 +101,7 @@ export default function Pricing() {
           {membresias.largoPlazo.map(plan => renderCard(plan, true))}
         </div>
         <div className="mobile-only pricing-swiper">
-          <Swiper
-            effect={'cards'}
-            grabCursor={true}
-            loop={true}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            modules={[EffectCards, Autoplay]}
-            className="mySwiper"
-          >
+          <Swiper {...getSwiperConfig(membresias.largoPlazo)}>
             {membresias.largoPlazo.map(plan => (
               <SwiperSlide key={plan.id}>{renderCard(plan, true)}</SwiperSlide>
             ))}
@@ -111,14 +115,7 @@ export default function Pricing() {
                 {membresias.especiales.map(plan => renderCard(plan, true))}
              </div>
              <div className="mobile-only pricing-swiper" style={{ marginTop: '20px' }}>
-               <Swiper
-                 effect={'cards'}
-                 grabCursor={true}
-                 loop={true}
-                 autoplay={{ delay: 3000, disableOnInteraction: false }}
-                 modules={[EffectCards, Autoplay]}
-                 className="mySwiper"
-               >
+               <Swiper {...getSwiperConfig(membresias.especiales)}>
                  {membresias.especiales.map(plan => (
                    <SwiperSlide key={plan.id}>{renderCard(plan, true)}</SwiperSlide>
                  ))}
